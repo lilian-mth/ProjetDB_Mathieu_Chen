@@ -78,4 +78,5 @@ Ce dictionnaire est restreint à une trentaine de champs essentiels pour garanti
 ---
 
 ## Etape 2
-*(Section prête pour la suite)*
+
+![Aperçu du MCD](./images/image.png)
