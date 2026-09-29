@@ -1,6 +1,6 @@
 # ProjetDB_Mathieu_Chen
 
-## Etape 1
+## Etape 1 Analyser les besoins :
 
 ### 1. Objectif
 Refaire la base de données de Chess.com.
