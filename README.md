@@ -6,7 +6,7 @@
 Refaire la base de données de Chess.com.
 
 ### 2. Prompt de départ
-> **R (Rôle) :** Agis en tant qu'Architecte de Bases de Données (DBA) senior travaillant pour la plateforme Chess.com.
+> **R (Rôle) :** Agis en tant qu'architecte de Bases de Données (DBA) senior travaillant pour la plateforme Chess.com.
 > 
 > **I (Instructions) :** Analyse les besoins pour la refonte de la base de données du jeu. Génère une liste exhaustive de règles métier précises, puis déduis-en un dictionnaire de données complet.
 > 
