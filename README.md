@@ -157,3 +157,11 @@ Respecte l'ordre d'insertion pour les clés étrangères."
 **Contexte :** Le club organise des tournois et souhaite fidéliser ses membres en analysant leurs performances et leurs interactions.
 
 **Objectif :** Le responsable doit préparer un bilan de fin d'année. Pour cela, il a besoin d'extraire les données suivantes :
+
+Plan d'execution:
+
+<img width="481" height="815" alt="image" src="https://github.com/user-attachments/assets/bd909f9e-d111-464d-af95-e577fecbc564" />
+
+Plan d'execution optimisé
+
+<img width="677" height="817" alt="image" src="https://github.com/user-attachments/assets/3017aa31-cceb-40dd-8d47-896ff0b1a971" />
