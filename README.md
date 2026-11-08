@@ -105,49 +105,7 @@ participe = (#id_joueur, #id_tournoi, #id_statut, score VARCHAR(50));
 ## Etape 4
 
 Prompt :
-"Agis comme un expert en bases de données SQL. Je te fournis le schéma d'une base de données pour un club d'échecs. Ton objectif est de générer un script SQL d'insertion (3_insertion.sql) contenant un volume conséquent de données fictives mais réalistes.
-
-Schéma de la BD :
-
-Joueurs (id_joueur, pseudo_joueur, email_joueur, mot_de_passe_hash, elo_blitz, elo_rapide, elo_bullet, date_inscription_joueur)
-
-Statut (id_statut, libelle_statut)
-
-Tournoi (id_tournoi, nom_tournoi, date_de_debut, date_de_fin)
-
-Cadence (id_cadence, nom_cadence, temps_initial_sec, increment_sec)
-
-demande_d_ami (id_joueur_demande, id_joueur_recoit, date_de_demande)
-
-participe (id_joueur, id_tournoi, id_statut, score)
-
-Parties (id_partie, date_heure_debut, date_heure_fin, resultat_partie, pgn_complet, id_cadence)
-
-joue_partie (id_joueur, id_partie, couleur_joueur, variation_elo)
-
-Coup (id_partie, numéro_coup, notation_pgn_coup, temps_restant_sec)
-
-Contraintes à respecter impérativement :
-
-Génère au moins 20 joueurs, 5 tournois, 3 cadences, 30 parties, 60 coups.
-
-Les emails doivent être uniques et au format valide (ex: nom@domaine.com).
-
-Les ELO doivent être entre 1000 et 2800.
-
-Un joueur ne peut pas s'envoyer une demande d'ami à lui-même.
-
-Les dates de fin doivent être postérieures aux dates de début (tournois et parties).
-
-Les résultats de parties doivent être '1-0', '0-1' ou '1/2-1/2'.
-
-Les couleurs doivent être 'Blanc' ou 'Noir'.
-
-Les numéros de coups doivent commencer à 1 et être incrémentés.
-
-Utilise des INSERT INTO groupés pour optimiser le script.
-
-Respecte l'ordre d'insertion pour les clés étrangères."
+"Agis comme un expert en bases de données SQL. Je te fournis le schéma d'une base de données pour un club d'échecs. Ton objectif est de générer un script SQL d'insertion (3_insertion.sql) contenant un volume conséquent de données fictives mais réalistes."
 
 ## Etape 5 
 ### **1. Scénario d'utilisation**
