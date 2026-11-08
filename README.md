@@ -121,10 +121,15 @@ Plan d'execution:
 Requête utilisée:
 
 SELECT j.pseudo_joueur, j.elo_blitz, t.nom_tournoi
+
 FROM Joueurs j
+
 JOIN participe p ON j.id_joueur = p.id_joueur
+
 JOIN Tournoi t ON p.id_tournoi = t.id_tournoi
+
 WHERE j.elo_blitz > 2600
+
 ORDER BY j.elo_blitz DESC;
 
 <img width="481" height="815" alt="image" src="https://github.com/user-attachments/assets/bd909f9e-d111-464d-af95-e577fecbc564" />
