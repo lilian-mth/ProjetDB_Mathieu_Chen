@@ -1,4 +1,4 @@
--- Fichier : 1_creation.sql
+
 
 -- 1. Création des tables sans clés étrangères (tables indépendantes)
 
@@ -100,3 +100,30 @@ CREATE TABLE participe (
         ON DELETE CASCADE 
         ON UPDATE CASCADE
 );
+
+SELECT * FROM Joueurs;
+SELECT * FROM Parties;
+SELECT * FROM Tournoi;
+
+-- Test 1 : Échec lié au format de l'email (chk_email_format)
+INSERT INTO Joueurs (id_joueur, pseudo_joueur, email_joueur, mot_de_passe_hash)
+VALUES ('999', 'Hackerman', 'mauvais-email.com', 32);
+
+-- Test 2 : Échec lié à l'ELO négatif (chk_elo_positif)
+INSERT INTO Joueurs (id_joueur, pseudo_joueur, email_joueur, elo_blitz)
+VALUES ('998', 'botMaster', 'bot@email.com', -50);
+
+-- Suppression du joueur
+DELETE FROM Joueurs WHERE id_joueur = '1';
+
+-- Vérification : Ces requêtes doivent retourner un résultat vide
+
+SELECT * FROM joue_partie WHERE id_joueur = '1';
+SELECT * FROM demande_d_ami WHERE id_joueur_demande = '1' OR id_joueur_reçoit = '1';
+
+
+
+
+
+
+
