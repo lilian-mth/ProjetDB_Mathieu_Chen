@@ -83,13 +83,22 @@ Ce dictionnaire est restreint à une trentaine de champs essentiels pour garanti
 
 ## Etape 3
 
+
 Joueurs = (id_joueur VARCHAR(50), pseudo_joueur VARCHAR(50), email_joueur VARCHAR(255), mot_de_passe_hash VARCHAR(255), elo_blitz SMALLINT, elo_rapide SMALLINT, elo_bullet SMALLINT, date_inscription_joueur DATETIME);
+
 Tournoi = (id_tournoi VARCHAR(50), nom_tournoi VARCHAR(100), date_de_debut VARCHAR(50), date_de_fin VARCHAR(50));
+
 Cadence = (id_cadence VARCHAR(50), nom_cadence VARCHAR(30), temps_initial_sec BIGINT, increment_sec SMALLINT);
+
 Statut = (id_statut VARCHAR(50), libelle_statut VARCHAR(50));
+
 Parties = (id_partie VARCHAR(50), date_heure_debut DATETIME, date_heure_fin DATETIME, resultat_partie VARCHAR(10), pgn_complet TEXT, #id_cadence);
+
 Coup = (#id_partie, numéro_coup VARCHAR(50), notation_pgn_coup VARCHAR(50), temps_restant_sec VARCHAR(50));
+
 demande_d_ami = (#id_joueur_demande, #id_joueur_reçoit, date_de_demande VARCHAR(50));
+
 joue_partie = (#id_joueur, #id_partie, couleur_joueur VARCHAR(50), variation_elo REAL);
+
 participe = (#id_joueur, #id_tournoi, #id_statut, score VARCHAR(50));
 
