@@ -149,3 +149,11 @@ Utilise des INSERT INTO groupés pour optimiser le script.
 
 Respecte l'ordre d'insertion pour les clés étrangères."
 
+## Etape 5 
+### **1. Scénario d'utilisation**
+
+**Rôle :** Responsable de la communication et des événements du club d'échecs "Les Maîtres du Plateau".
+
+**Contexte :** Le club organise des tournois et souhaite fidéliser ses membres en analysant leurs performances et leurs interactions.
+
+**Objectif :** Le responsable doit préparer un bilan de fin d'année. Pour cela, il a besoin d'extraire les données suivantes :
