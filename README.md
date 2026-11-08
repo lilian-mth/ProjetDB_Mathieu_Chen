@@ -131,3 +131,5 @@ ORDER BY j.elo_blitz DESC;
 
 #### Plan d'exécution optimisé :
 <img width="677" height="817" alt="image" src="https://github.com/user-attachments/assets/3017aa31-cceb-40dd-8d47-896ff0b1a971" />
+
+Dans ces 2 plans, on fait la lecture du bas vers le haut, par exemple pour le plan d'execution initial on lis les tables, les jointures, la selection, la projection et finalement le tri décroissant.
