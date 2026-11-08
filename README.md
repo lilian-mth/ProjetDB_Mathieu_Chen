@@ -1,6 +1,8 @@
 # ProjetDB_Mathieu_Chen
 
-## Etape 1 Analyser les besoins :
+---
+
+## Étape 1 : Analyser les besoins
 
 ### 1. Objectif
 Refaire la base de données de Chess.com.
@@ -77,63 +79,55 @@ Ce dictionnaire est restreint à une trentaine de champs essentiels pour garanti
 
 ---
 
-## Etape 2
+## Étape 2 : Modèle Conceptuel de Données (MCD)
 
 ![Aperçu du MCD](./images/image.png)
 
-## Etape 3
+---
 
+## Étape 3 : Modèle Logique de Données (MLD)
 
-Joueurs = (id_joueur VARCHAR(50), pseudo_joueur VARCHAR(50), email_joueur VARCHAR(255), mot_de_passe_hash VARCHAR(255), elo_blitz SMALLINT, elo_rapide SMALLINT, elo_bullet SMALLINT, date_inscription_joueur DATETIME);
+* **Joueurs** = (`id_joueur` VARCHAR(50), `pseudo_joueur` VARCHAR(50), `email_joueur` VARCHAR(255), `mot_de_passe_hash` VARCHAR(255), `elo_blitz` SMALLINT, `elo_rapide` SMALLINT, `elo_bullet` SMALLINT, `date_inscription_joueur` DATETIME);
+* **Tournoi** = (`id_tournoi` VARCHAR(50), `nom_tournoi` VARCHAR(100), `date_de_debut` VARCHAR(50), `date_de_fin` VARCHAR(50));
+* **Cadence** = (`id_cadence` VARCHAR(50), `nom_cadence` VARCHAR(30), `temps_initial_sec` BIGINT, `increment_sec` SMALLINT);
+* **Statut** = (`id_statut` VARCHAR(50), `libelle_statut` VARCHAR(50));
+* **Parties** = (`id_partie` VARCHAR(50), `date_heure_debut` DATETIME, `date_heure_fin` DATETIME, `resultat_partie` VARCHAR(10), `pgn_complet` TEXT, `#id_cadence`);
+* **Coup** = (`#id_partie`, `numéro_coup` VARCHAR(50), `notation_pgn_coup` VARCHAR(50), `temps_restant_sec` VARCHAR(50));
+* **demande_d_ami** = (`#id_joueur_demande`, `#id_joueur_reçoit`, `date_de_demande` VARCHAR(50));
+* **joue_partie** = (`#id_joueur`, `#id_partie`, `couleur_joueur` VARCHAR(50), `variation_elo` REAL);
+* **participe** = (`#id_joueur`, `#id_tournoi`, `#id_statut`, `score` VARCHAR(50));
 
-Tournoi = (id_tournoi VARCHAR(50), nom_tournoi VARCHAR(100), date_de_debut VARCHAR(50), date_de_fin VARCHAR(50));
+---
 
-Cadence = (id_cadence VARCHAR(50), nom_cadence VARCHAR(30), temps_initial_sec BIGINT, increment_sec SMALLINT);
+## Étape 4 : Insertion des données
 
-Statut = (id_statut VARCHAR(50), libelle_statut VARCHAR(50));
+> **Prompt d'insertion :**
+> "Agis comme un expert en bases de données SQL. Je te fournis le schéma d'une base de données pour un club d'échecs. Ton objectif est de générer un script SQL d'insertion (3_insertion.sql) contenant un volume conséquent de données fictives mais réalistes."
 
-Parties = (id_partie VARCHAR(50), date_heure_debut DATETIME, date_heure_fin DATETIME, resultat_partie VARCHAR(10), pgn_complet TEXT, #id_cadence);
+---
 
-Coup = (#id_partie, numéro_coup VARCHAR(50), notation_pgn_coup VARCHAR(50), temps_restant_sec VARCHAR(50));
+## Étape 5 : Interrogation de la base de données
 
-demande_d_ami = (#id_joueur_demande, #id_joueur_reçoit, date_de_demande VARCHAR(50));
+### 1. Scénario d'utilisation
 
-joue_partie = (#id_joueur, #id_partie, couleur_joueur VARCHAR(50), variation_elo REAL);
+* **Rôle :** Responsable de la communication et des événements du club d'échecs "Les Maîtres du Plateau".
+* **Contexte :** Le club organise des tournois et souhaite fidéliser ses membres en analysant leurs performances et leurs interactions.
+* **Objectif :** Le responsable doit préparer un bilan de fin d'année. Pour cela, il a besoin d'extraire les données suivantes.
 
-participe = (#id_joueur, #id_tournoi, #id_statut, score VARCHAR(50));
+### 2. Étude des plans d'exécution
 
-## Etape 4
-
-Prompt :
-"Agis comme un expert en bases de données SQL. Je te fournis le schéma d'une base de données pour un club d'échecs. Ton objectif est de générer un script SQL d'insertion (3_insertion.sql) contenant un volume conséquent de données fictives mais réalistes."
-
-## Etape 5 
-### **1. Scénario d'utilisation**
-
-**Rôle :** Responsable de la communication et des événements du club d'échecs "Les Maîtres du Plateau".
-
-**Contexte :** Le club organise des tournois et souhaite fidéliser ses membres en analysant leurs performances et leurs interactions.
-
-**Objectif :** Le responsable doit préparer un bilan de fin d'année. Pour cela, il a besoin d'extraire les données suivantes :
-
-Plan d'execution:
-
-Requête utilisée:
-
+**Requête utilisée :**
+```sql
 SELECT j.pseudo_joueur, j.elo_blitz, t.nom_tournoi
-
 FROM Joueurs j
-
 JOIN participe p ON j.id_joueur = p.id_joueur
-
 JOIN Tournoi t ON p.id_tournoi = t.id_tournoi
-
 WHERE j.elo_blitz > 2600
-
 ORDER BY j.elo_blitz DESC;
+```
 
+#### Plan d'exécution initial :
 <img width="481" height="815" alt="image" src="https://github.com/user-attachments/assets/bd909f9e-d111-464d-af95-e577fecbc564" />
 
-Plan d'execution optimisé:
-
+#### Plan d'exécution optimisé :
 <img width="677" height="817" alt="image" src="https://github.com/user-attachments/assets/3017aa31-cceb-40dd-8d47-896ff0b1a971" />
